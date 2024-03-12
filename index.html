@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #idimagen {
+            display: none;
+        }
+
+        #mensajeAlerta {
+            color: red;
+            background-color: yellow;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hola</h1>
+    <button onclick="ejecutar()">BOTON QUE HAY QUE APRETAR</button>
+    <input type="text" id="textoInput" placeholder="OMG APRETA EL BOTON" oninput="verificarTexto()">
+    <br>
+    <label id="mensajeAlerta">Cargue algo por favor.</label>
+    <br><br>
+    <label id="idtexto" style="display: none;">El texto</label>
+    <img id="idimagen" src="./images.jpg" alt="Imagen bloqueada">
+
+    <script>
+        function ejecutar(){
+            var textoInput = document.getElementById("textoInput").value.trim(); // Obtener el valor del input y quitar espacios en blanco
+            if(textoInput !== ""){ // Si hay texto
+                alert("¡Sí hay texto!\nTexto cargado: " + textoInput);
+                console.log("Texto cargado:", textoInput);
+            } else { // Si no hay texto
+                document.getElementById("mensajeAlerta").style.display = 'block';
+                document.getElementById("mensajeAlerta").textContent = 'Cargue algo por favor.';
+                document.getElementById("idtexto").style.display = 'block';
+                document.getElementById("idtexto").style.backgroundColor = 'red';
+                document.getElementById("idimagen").style.display = 'block';
+            }
+        }
+
+        function verificarTexto() {
+            var textoInput = document.getElementById("textoInput").value.trim(); // Obtener el valor del input y quitar espacios en blanco
+            if(textoInput !== ""){ // Si hay texto
+                document.getElementById("mensajeAlerta").style.display = 'none';
+                document.getElementById("idtexto").style.display = 'none';
+                document.getElementById("idimagen").style.display = 'none';
+            } else { // Si no hay texto
+                document.getElementById("mensajeAlerta").style.display = 'block';
+                document.getElementById("mensajeAlerta").textContent = 'Cargue algo por favor.';
+                document.getElementById("idtexto").style.display = 'block';
+                document.getElementById("idtexto").style.backgroundColor = 'red';
+                document.getElementById("idimagen").style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
